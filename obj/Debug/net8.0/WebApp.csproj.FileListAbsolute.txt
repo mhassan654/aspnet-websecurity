@@ -136,3 +136,5 @@ D:\LEARNING CENTER\C#\WebApp\obj\Debug\net8.0\WebApp.pdb
 D:\LEARNING CENTER\C#\WebApp\obj\Debug\net8.0\WebApp.genruntimeconfig.cache
 D:\LEARNING CENTER\C#\WebApp\obj\Debug\net8.0\ref\WebApp.dll
 D:\LEARNING CENTER\C#\WebApp\bin\Debug\net8.0\QRCoder.dll
+D:\LEARNING CENTER\C#\WebApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+D:\LEARNING CENTER\C#\WebApp\obj\Debug\net8.0\WebApp.sourcelink.json

@@ -1,41 +1,36 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net.Mail;
 using WebApp.Data.Account;
 
-namespace WebApp.Pages.Account
+namespace WebApp.Pages.Account;
+
+public class ConfirmEmailModel : PageModel
 {
-    
-    public class ConfirmEmailModel : PageModel
+    private readonly UserManager<User> userManager;
+
+    public ConfirmEmailModel(UserManager<User> userManager)
     {
-        private readonly UserManager<User> userManager;
+        this.userManager = userManager;
+    }
 
-        [BindProperty] 
-        public string Message { get; set; }
+    [BindProperty] public string Message { get; set; }
 
-        public ConfirmEmailModel(UserManager<User> userManager)
+    public async Task<IActionResult> OnGetAsync(string userId, string token)
+    {
+        var user = await userManager.FindByIdAsync(userId);
+        if (user != null)
         {
-            
-            this.userManager = userManager;
-        }
-
-        public async Task<IActionResult> OnGetAsync(string userId, string token)
-        {
-            var user = await this.userManager.FindByIdAsync(userId);
-            if (user != null)
+            var result = await userManager.ConfirmEmailAsync(user, token);
+            if (result.Succeeded)
             {
-                var result = await this.userManager.ConfirmEmailAsync(user, token);
-                if (result.Succeeded)
-                {
-                    this.Message = "Email address is successfully confirmed, you can now try to login";
-                   
-                    return Page();
-                }
-            }
+                Message = "Email address is successfully confirmed, you can now try to login";
 
-            this.Message = "Failed to validate email";
-            return Page();
+                return Page();
+            }
         }
+
+        Message = "Failed to validate email";
+        return Page();
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page
-@model WebApp.Pages.Account.AuthenticatorWithMfaSetupModel
+@model AuthenticatorWithMfaSetupModel
 
 @{
 }
@@ -8,12 +8,11 @@
 
 <p>Please enter the key to your authenticator app.</p>
 <p>
-    @if(Model.ViewModel.QRCodeBytes != null)
+    @if (Model.ViewModel.QRCodeBytes != null)
     {
-        <img src="@string.Format("data:image/png;base64,{0}",
-    Convert.ToBase64String(Model.ViewModel.QRCodeBytes))" width="300" height="300" />
+        <img src="@string.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.ViewModel.QRCodeBytes))" width="300" height="300"/>
     }
-   
+
 </p>
 
 <h3>Step 2:</h3>

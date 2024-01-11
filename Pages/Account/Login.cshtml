@@ -1,5 +1,5 @@
 ﻿@page
-@model WebApp.Pages.Account.LoginModel
+@model LoginModel
 @{
 }
 
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-check row mb-3">
-               
+
                 <div class="col-5">
                     <input type="checkbox" class="form-check-input" asp-for="Credential.RememberMe">
                     <label class="form-check-label" asp-for="Credential.RememberMe"></label>
@@ -44,7 +44,21 @@
                     <a class="btn btn-link" href="/Account/Register">Sign Up</a>
                 </div>
             </div>
+
+            <br/>
+            <p>
+                Social Media Logins:
+                <div class="form-group">
+                    @foreach (var provider in Model.ExternalLoginProviders)
+                    {
+                        <button type="submit" asp-page-handler="LoginExternally" name="provider"
+                                value="@provider.Name" class="btn btn-primary">
+                            Login with @provider.DisplayName
+                        </button>
+                    }
+                </div>
+            </p>
         </form>
     </div>
-  
+
 </div>

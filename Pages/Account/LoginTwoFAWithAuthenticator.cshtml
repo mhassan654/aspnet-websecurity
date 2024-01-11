@@ -1,5 +1,5 @@
 ﻿@page
-@model WebApp.Pages.Account.LoginTwoFAWithAuthenticatorModel
+@model LoginTwoFAWithAuthenticatorModel
 @{
 }
 
@@ -24,7 +24,7 @@
                     <input type="submit" class="btn btn-primary btn-block" value="Verify">
                 </div>
                 <div class="col-5">
-                    <input type="hidden" asp-for="AuthenticatorMFA.RememberMe" />
+                    <input type="hidden" asp-for="AuthenticatorMFA.RememberMe"/>
                 </div>
             </div>
         </form>
